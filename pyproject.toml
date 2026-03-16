@@ -9,4 +9,5 @@ dependencies = [
     "torch<2.4",
     "transformers",
     "torchaudio<2.4",
+    "modelscope>=1.34.0",
 ]

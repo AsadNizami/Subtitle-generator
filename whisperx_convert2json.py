@@ -22,7 +22,7 @@ model = whisperx.load_model("large-v3", device, compute_type=compute_type,
 # model = whisperx.load_model("large-v2", device, compute_type=compute_type, download_root=model_dir)
 
 audio = whisperx.load_audio(audio_file)
-result = model.transcribe(audio, batch_size=batch_size, language=config.OUTPUT_LANGUAGE, task="translate")
+result = model.transcribe(audio, batch_size=batch_size, language=config.OUTPUT_LANGUAGE, task=config.TASK)
 
 print(result["segments"]) # before alignment
 
@@ -35,3 +35,8 @@ result = whisperx.align(result["segments"], model_a, metadata, audio, device, re
 
 # print(result["segments"]) 
 json.dump(result, open(config.INTERMEDIATE_JSON_NAME, "w"), ensure_ascii=False)
+
+print(f"✅ JSON file created at: {config.INTERMEDIATE_JSON_NAME}")
+print(f"time taken: {result['end']} seconds")
+
+# 10:58 11:00
